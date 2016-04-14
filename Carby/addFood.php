@@ -1,9 +1,27 @@
 <?php
-global $wpdb;
-$wpdb->insert("wp_Food_Test", array(
-   "FoodName" => $FoodName,
-   "Grams" => $Grams,
-   "Oz" => $Oz,
-   "Carbs" => $Carbs,
-));
+// Only process the form if $_POST isn't empty
+if ( ! empty( $_POST ) ) {
+  
+  // Connect to MySQL
+  $mysqli = new mysqli( 'HOST', 'DB_USERNAME', 'DB_PASSWORD', 'DB_NAME' ); //Add actual info
+  
+  // Check connection
+  if ( $mysqli->connect_error ) {
+    die( 'Connect Error: ' . $mysqli->connect_errno . ': ' . $mysqli->connect_error );
+  }
+  
+  // Insert data
+  $sql = "INSERT INTO foodTest (FoodName,Grams,Oz,Carbs) VALUES ( '{$mysqli->real_escape_string($_POST['FoodName'])}', '{$mysqli->real_escape_string($_POST['Grams'])}', '{$mysqli->real_escape_string($_POST['Oz'])}','{$mysqli->real_escape_string($_POST['Carbs'])}' )";
+  $insert = $mysqli->query($sql);
+  
+  // Print response
+  if ( $insert ) {
+    echo "Success! Row ID: {$mysqli->insert_id}";
+  } else {
+    die("Error: {$mysqli->errno} : {$mysqli->error}");
+  }
+  
+  // Close connection
+  $mysqli->close();
+}
 ?>
