@@ -11,7 +11,7 @@ if ( ! empty( $_POST ) ) {
   }
   
   // Insert data
-  $sql = "INSERT INTO `elizeweb_Carby`.`foodTest` (`foodName`,`grams`, `oz`, `carbCount`) VALUES ( '{$mysqli->real_escape_string($_POST['foodName'])}', '{$mysqli->real_escape_string($_POST['grams'])}','{$mysqli->real_escape_string($_POST['oz'])}', '{$mysqli->real_escape_string($_POST['carbCount'])}' )";
+  $sql = "INSERT INTO `elizeweb_Carby`.`foodTest` (`FoodName`,`Grams`, `OZ`, `Carbs`) VALUES ( '{$mysqli->real_escape_string($_POST['FoodName'])}', '{$mysqli->real_escape_string($_POST['Grams'])}','{$mysqli->real_escape_string($_POST['OZ'])}', '{$mysqli->real_escape_string($_POST['Carbs'])}' )";
   $insert = $mysqli->query($sql);
   
   // Print response
