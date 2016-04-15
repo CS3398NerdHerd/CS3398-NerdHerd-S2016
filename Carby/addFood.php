@@ -3,7 +3,7 @@
 if ( ! empty( $_POST ) ) {
   
   // Connect to MySQL
-  $mysqli = new mysqli( 'HOST', 'DB_USERNAME', 'DB_PASSWORD', 'DB_NAME' ); //Add actual info
+  $mysqli = new mysqli( 'localhost', 'elizeweb_softwar', 'CS3398', 'elizeweb_Carby' );
   
   // Check connection
   if ( $mysqli->connect_error ) {
